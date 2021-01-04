@@ -1,24 +1,22 @@
 #include <dht.h>
 #include <LiquidCrystal.h>
 
-#define BUZZER  2  
-#define BUZZER2  A2    
-#define BUZZER3  A4  
-#define DHT_PIN  3
+#define BUZZER  3  
+#define BUZZER2  4     
+#define DHT_PIN  2
 #define TRIG 6
-#define ECHO 4
-#define RS 12
-#define E 11
-#define LCD_PIN_DB4 7
-#define LCD_PIN_DB5 8
-#define LCD_PIN_DB6 9
-#define LCD_PIN_DB7 10
-#define LED 5
-#define RED_LED A3
-#define PUSHBUTTON  13
-#define LDR_PIN A0
-#define FLAME_PIN A1
-#define RAIN_PIN A5
+#define ECHO 5
+#define RS 13
+#define E 12
+#define LCD_PIN_DB4 10
+#define LCD_PIN_DB5 9
+#define LCD_PIN_DB6 8
+#define LCD_PIN_DB7 7
+#define LED 0
+#define RED_LED 1
+#define LDR_PIN A5
+#define FLAME_PIN A0
+
 
 long t ;
 int d;
@@ -32,13 +30,11 @@ void setup() {
     pinMode(ECHO,INPUT);
     pinMode(LED,OUTPUT);
     pinMode(BUZZER,OUTPUT);
-    pinMode(PUSHBUTTON,INPUT);
     pinMode(LDR_PIN,INPUT);
     pinMode(RED_LED,OUTPUT);
     pinMode(FLAME_PIN,INPUT);
     pinMode(BUZZER2,OUTPUT);
-    pinMode(BUZZER3,OUTPUT);
-    pinMode(RAIN_PIN,INPUT);
+ 
 }
 
 void loop() {
@@ -100,16 +96,5 @@ void loop() {
     noTone(BUZZER);
   }
 
-  //Rain sensor with buzzer
-  int rainValue = analogRead(RAIN_PIN);
-  if(rainValue <= 800)
-  { 
-    tone(BUZZER3,100);
-    delay(1000); 
-  }
-  else
-  {
-    noTone(BUZZER);
-  }
 
 }
